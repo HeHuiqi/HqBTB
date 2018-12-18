@@ -1,4 +1,5 @@
 
+//bitcoin库
 const bitcoin = require('bitcoinjs-lib')
 
 function HqMessageSign1() {
