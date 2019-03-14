@@ -19,11 +19,13 @@ function HqMessageSign1() {
     let msg = secp.sign(hash, bitcoin.crypto.sha256('9f9b465e5db8e793a71d116bcf595f098d5a2f928f1d292acc6a62900bdba58e'));
     console.log(msg.toString('hex'));
 }
-
-
+// 9f9b465e5db8e793a71d116bcf595f09
+// 8d5a2f928f1d292acc6a62900bdba58e
+// 809f9b465e5db8e793a71d116bcf595f098d5a2f928f1d292acc6a62900bdba58e01
+// L2ZxvziVam5X4K8GepnKEymZvRng4UcGSPixgaoMroSAuz8t22vS
 // msg: 'hello'
-//cf0447ec85f0ce7150a257db32ebfcb7523dae17c36dbd1be598779fec0484f4
-// privatekey: 9f9b465e5db8e793a71d116bcf595f098d5a2f928f1d292acc6a62900bdba58e
+//seed:cf0447ec85f0ce7150a257db32ebfcb7523dae17c36dbd1be598779fec0484f4
+// private key: 9f9b465e5db8e793a71d116bcf595f098d5a2f928f1d292acc6a62900bdba58e
 // signature: 1f6cace2e99f7514e2d50c1de7b2c90ab11562c9bda904aec783289400de3e3dab46181aa62a8cc52e69b316346783c908beeaa4500245174a5ffd6ce8ad916183
 
 function HqSinMessage() {
@@ -51,7 +53,7 @@ function HqSinMessage() {
     var hqMessage = hqFormtSignMessage('hello');
     console.log("hqMessage=="+hqMessage.toString('hex'));
 
-    const secp256k1 = require('secp256k1')
+    const secp256k1 = require('secp256k1');
 //创建一个私钥
     let privKey
     do {
@@ -63,7 +65,7 @@ function HqSinMessage() {
     const pubKey = secp256k1.publicKeyCreate(privKey)
     console.log('pubKey=='+pubKey.toString('hex'));
 
-//签名消息生成消息结果，这里会少一个前缀
+//签名消息生成消息结果，这里会少一个前缀header
     const sigObj = secp256k1.sign(hqMessage, privKey)
     var signature = sigObj.signature.toString('hex');
     console.log('signature=='+signature);
